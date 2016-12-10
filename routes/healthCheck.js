@@ -6,7 +6,17 @@ var router = express.Router();
 
 /* GET */
 router.get('/', function(req, res, next) {
-    res.json({status: 'OK'});
+    var timeoutTime = req.query.timeout;
+
+    if(timeoutTime) {
+        setTimeout(function() {
+            res.json({status: 'OK'});
+        }, timeoutTime);
+    }
+    else {
+        res.json({status: 'OK'});
+    }
+
 });
 
 module.exports = router;
